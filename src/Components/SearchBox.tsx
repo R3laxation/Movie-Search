@@ -1,19 +1,16 @@
 import React from 'react';
-import { MovieType } from '../App';
 
-type MoviesListPropsType = {
-    movies: MovieType[]
+
+type SearchBoxPropsType = {
+    value: string
+    setSearchValue: (value: string) => void
 }
 
-export const MovieList = ({movies}: MoviesListPropsType) => {
+export const SearchBox = ({value, setSearchValue}: SearchBoxPropsType) => {
     return (
-        <>
-            {movies.map((m,i) => <div className={'d-flex justify-content-start m-3'} key={i}>
-                <img src={m.Poster} alt={m.Title}/>
-                </div>
-
-            )}
-        </>
+        <div className={'col'}>
+            <input className='form-control' placeholder='Type to search...' value={value} onChange={(e) => setSearchValue(e.currentTarget.value)}/>
+        </div>
     );
 };
 
