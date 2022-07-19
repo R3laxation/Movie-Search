@@ -1,0 +1,27 @@
+import React from 'react';
+import { MovieType } from '../App';
+
+type MoviesListPropsType = {
+    movies: MovieType[]
+    favouriteComponent: React.FC
+    handleFavouriteClick: (movie: MovieType) => void
+}
+
+export const MovieList = ({movies, favouriteComponent, handleFavouriteClick}: MoviesListPropsType) => {
+
+    const FavouriteComponent = favouriteComponent;
+
+    return (
+        <div className={s.movieList}>
+            {movies.map((m,i) => <div className={'image-container'} key={i}>
+                <img src={m.Poster} alt={m.Title}/>
+                <div className='overlay' onClick={() => handleFavouriteClick(m)}>
+                    <FavouriteComponent/>
+                </div>
+                </div>
+
+            )}
+        </div>
+    );
+};
+
